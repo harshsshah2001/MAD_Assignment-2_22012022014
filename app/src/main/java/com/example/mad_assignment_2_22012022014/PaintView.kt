@@ -1,18 +1,76 @@
 package com.example.mad_assignment_2_22012022014
 
 import android.content.Context
+import android.graphics.Canvas
+import android.graphics.Color
+import android.graphics.Paint
+import android.graphics.Path
 import android.util.AttributeSet
+import android.view.MotionEvent
 import android.view.View
+import android.view.ViewGroup
+import com.example.mad_assignment_2_22012022014.MainActivity.Companion.PaintBrush
+import com.example.mad_assignment_2_22012022014.MainActivity.Companion.path
+import kotlinx.coroutines.joinAll
 
 class PaintView:View {
 
-    class KotlinView : View {
+// it is responsiblw for hight and width of our canvas with respect to parent layout
+    var params:ViewGroup.LayoutParams?=null
+    companion object{
+        var pathList = ArrayList<Path>()
+        var colorList = ArrayList<Int>()
+        var currnetBrush = Color.BLACK
+    }
 
-        constructor(context: Context) : this(context, null)
-        constructor(context: Context, attrs: AttributeSet?) : this(context, attrs, 0)
-
-        constructor(context: Context, attrs: AttributeSet?, defStyleAttr: Int) : super(context, attrs, defStyleAttr) {
+        constructor(context: Context) : this(context, null){
+            init()
+        }
+        constructor(context: Context, attrs: AttributeSet?) : this(context, attrs, 0){
+            init()
         }
 
+        constructor(context: Context, attrs: AttributeSet?, defStyleAttr: Int) : super(context, attrs, defStyleAttr) {
+                init()
+        }
+    private  fun init(){
+//        this thing making for a making texture smooth of our stocks
+        PaintBrush.isAntiAlias = true
+        PaintBrush.color= currnetBrush
+        PaintBrush.style = Paint.Style.STROKE
+//        strock join is any end of path so if you set it round the any path is round finish
+        PaintBrush.strokeJoin= Paint.Join.ROUND
+        PaintBrush.strokeWidth=8f
+//        This thing we initialize to our brush
+        params=ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT)
+    }
+
+//    We have to register that moment of fingure on the screen
+    override fun onTouchEvent(event: MotionEvent): Boolean {
+        var x=event.x
+        var y=event.y
+
+    when(event.action){
+        MotionEvent.ACTION_DOWN->{
+            path.moveTo(x,y)
+            return true
+        }
+        MotionEvent.ACTION_MOVE->{
+            path.lineTo(x,y)
+            pathList.add(path)
+            colorList.add(currnetBrush)
+        }
+        else  -> return false
+    }
+    postInvalidate()
+    return false
+    }
+
+    override fun onDraw(canvas: Canvas) {
+        for(i in pathList.indices){
+            PaintBrush.setColor(colorList[i])
+            canvas.drawPath(pathList[i], PaintBrush)
+            invalidate()
+        }
     }
 }

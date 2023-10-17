@@ -1,16 +1,20 @@
     package com.example.mad_assignment_2_22012022014
 
+import android.graphics.Color
 import android.graphics.Paint
 import android.graphics.Path
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ImageButton
 import android.widget.Toast
+import com.example.mad_assignment_2_22012022014.PaintView.Companion.colorList
+import com.example.mad_assignment_2_22012022014.PaintView.Companion.currnetBrush
+import com.example.mad_assignment_2_22012022014.PaintView.Companion.pathList
 
     class MainActivity : AppCompatActivity() {
 
         companion object{
-            val path=Path()
+            var path=Path()
             val PaintBrush=Paint()
         }
 
@@ -26,16 +30,31 @@ import android.widget.Toast
         val eraser=findViewById<ImageButton>(R.id.whitecolor)
 
         redbtn.setOnClickListener {
-            Toast.makeText(this,"Red Button is Clicked",Toast.LENGTH_SHORT).show()
+            Toast.makeText(this,"You Have Select Red Color",Toast.LENGTH_SHORT).show()
+            PaintBrush.setColor(Color.RED)
+            currentcolor(PaintBrush.color)
         }
         bluebtn.setOnClickListener {
-            Toast.makeText(this,"Blue Button is Clicked",Toast.LENGTH_SHORT).show()
+            Toast.makeText(this,"You Have Select Blue Color]",Toast.LENGTH_SHORT).show()
+            PaintBrush.setColor(Color.BLUE)
+            currentcolor(PaintBrush.color)
         }
         blackbtn.setOnClickListener {
-            Toast.makeText(this,"black Button is Clicked",Toast.LENGTH_SHORT).show()
+            Toast.makeText(this,"You Have Select Black Color ",Toast.LENGTH_SHORT).show()
+            PaintBrush.setColor(Color.BLACK)
+            currentcolor(PaintBrush.color)
         }
         eraser.setOnClickListener {
-            Toast.makeText(this,"eraser Button is Clicked",Toast.LENGTH_SHORT).show()
+            Toast.makeText(this,"Erase All",Toast.LENGTH_SHORT).show()
+        pathList.clear()
+            colorList.clear()
+            path.reset()
         }
     }
+        private  fun currentcolor(color:Int){
+// currentbrush export Paintview.kt file
+            currnetBrush = color
+            path = Path()
+        }
+
 }
