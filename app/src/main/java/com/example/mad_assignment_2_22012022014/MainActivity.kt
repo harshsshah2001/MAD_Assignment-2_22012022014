@@ -30,17 +30,17 @@ import com.example.mad_assignment_2_22012022014.PaintView.Companion.pathList
         val eraser=findViewById<ImageButton>(R.id.whitecolor)
 
         redbtn.setOnClickListener {
-            Toast.makeText(this,"You Have Select Red Color",Toast.LENGTH_SHORT).show()
+            Toast.makeText(this,"You Pick Red",Toast.LENGTH_SHORT).show()
             PaintBrush.setColor(Color.RED)
             currentcolor(PaintBrush.color)
         }
         bluebtn.setOnClickListener {
-            Toast.makeText(this,"You Have Select Blue Color]",Toast.LENGTH_SHORT).show()
+            Toast.makeText(this,"You Pick Blue",Toast.LENGTH_SHORT).show()
             PaintBrush.setColor(Color.BLUE)
             currentcolor(PaintBrush.color)
         }
         blackbtn.setOnClickListener {
-            Toast.makeText(this,"You Have Select Black Color ",Toast.LENGTH_SHORT).show()
+            Toast.makeText(this,"You Pick Black",Toast.LENGTH_SHORT).show()
             PaintBrush.setColor(Color.BLACK)
             currentcolor(PaintBrush.color)
         }
