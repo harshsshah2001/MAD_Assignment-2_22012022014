@@ -13,7 +13,10 @@ import com.example.mad_assignment_2_22012022014.PaintView.Companion.pathList
 
     class MainActivity : AppCompatActivity() {
 
+
+      // We make companion object because it is accessible thorought out the application
         companion object{
+          //now we have have path and paint brush.
             var path=Path()
             val PaintBrush=Paint()
         }

@@ -1,3 +1,5 @@
+// THis is responsible for drawing
+
 package com.example.mad_assignment_2_22012022014
 
 import android.content.Context
@@ -18,8 +20,14 @@ class PaintView:View {
 // it is responsiblw for hight and width of our canvas with respect to parent layout
     var params:ViewGroup.LayoutParams?=null
     companion object{
+
+        //It store all the path in screen
         var pathList = ArrayList<Path>()
+
+        // we take colour list bcz we have user multiple color in this project.
         var colorList = ArrayList<Int>()
+
+        // This holds the default value of color on screen and we set defalut color is black
         var currnetBrush = Color.BLACK
     }
 
@@ -33,6 +41,8 @@ class PaintView:View {
         constructor(context: Context, attrs: AttributeSet?, defStyleAttr: Int) : super(context, attrs, defStyleAttr) {
                 init()
         }
+
+    // We have to inilize to our strok or path that we have actually draw .
     private  fun init(){
 //        this thing making for a making texture smooth of our stocks
         PaintBrush.isAntiAlias = true
@@ -66,6 +76,8 @@ class PaintView:View {
     return false
     }
 
+
+    // When user draw something on screen
     override fun onDraw(canvas: Canvas) {
         for(i in pathList.indices){
             PaintBrush.setColor(colorList[i])
