@@ -32,6 +32,9 @@ Guides and Grids: Paint applications may provide tools for creating guides, grid
 
 Cloning and Healing Tools: These tools help to remove imperfections in photos or duplicate parts of an image.
 
+## Images Of Application.
+
+
 
 ## Support
 
