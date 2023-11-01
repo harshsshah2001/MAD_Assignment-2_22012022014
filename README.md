@@ -7,7 +7,7 @@ A paint application, often simply referred to as "paint software" or "paint prog
 
 Before jumping to the code here are a few of the methods which we will be using in building our app:
 
-void setStrokeJoin (Paint.Join join) : This method sets the paint to join to either ROUND, BEVEL, MITER
+void setStrokeJoin (Paint.Join join) : This method sets the paint to join to either ROUND, PAINT , PATH
 
 setAntiAlias (boolean aa) : AntiAliasing smooths out the edges of what is drawn but has little effect on the shape’s interior.
 
